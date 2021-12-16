@@ -4,7 +4,7 @@ Simple configuration files. The main branch contains my basic setup under Ubuntu
 
 ## Setup
 
-This will install all the dotfiles files using symlinks and back up old ones.
+This will install all the dotfiles using symlinks and back up old ones.
 
 ```sh
 # Clone the repo in your home directory
