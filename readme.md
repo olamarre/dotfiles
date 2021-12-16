@@ -1,10 +1,10 @@
 # dotfiles
 
-My configuration files. The main branch contains my basic setup under Ubuntu 20.04. Other machine- and OS-specific modifications will eventually be created in other branches.
+Simple configuration files. The main branch contains my basic setup under Ubuntu 20.04. Other machine- and OS-specific configs will eventually be saved in other branches.
 
 ## Setup
 
-This will install all the config files using symlinks and back up old ones.
+This will install all the dotfiles files using symlinks and back up old ones.
 
 ```sh
 # Clone the repo in your home directory
