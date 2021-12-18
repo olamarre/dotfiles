@@ -28,3 +28,20 @@ set colorcolumn=73,80
 
 " By default, the color columns are in bright red, this turns them to light grey
 highlight ColorColumn ctermbg=0 guibg=lightgrey
+
+" Auto-install vim-plug
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+" list plugins to install here
+call plug#begin('~/.vim/plugged')
+Plug 'gruvbox-community/gruvbox'
+call plug#end()
+
+" set color scheme (& dark background)
+colorscheme gruvbox 
+set bg=dark
+

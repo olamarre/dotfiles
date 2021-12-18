@@ -44,6 +44,8 @@ eval $(thefuck --alias)
 # example usage: kill_port 8889
 kill_port() {sudo kill -9 $(sudo lsof -t -i:$1)}
 
+# Necessary to maintain colorscheme in tmux
+export TERM="screen-256color"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
