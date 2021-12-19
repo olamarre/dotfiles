@@ -20,6 +20,9 @@ set nu rnu
 " Line numbers
 "set number
 
+" Keep cursor vertically centered when scrolling
+set scrolloff=999  " set scrolloff=0 to reset
+
 " Always show status bar (file name, status, current line/column, etc.)
 set laststatus=2
 
