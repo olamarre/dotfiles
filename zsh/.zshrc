@@ -62,3 +62,16 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+# ROS & GAZEBO
+source /opt/ros/noetic/setup.zsh
+source ~/catkin_ws/devel/setup.zsh
+
+alias kill_gazebo="killall -9 gazebo & killall -9 gzserver & killall -9 gzclient"
+
+
+# Builds and run a standalone cpp file. Usage: cpprun foo.cpp
+cpprun () {
+    filename="${1%.*}"
+    g++ -o $filename.out $1 && ./$filename.out 
+    rm $filename.out
+}
