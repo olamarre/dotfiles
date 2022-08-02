@@ -48,3 +48,5 @@ call plug#end()
 colorscheme gruvbox 
 set bg=dark
 
+" Markdown code block syntax highlighting
+let g:markdown_fenced_languages = ['python', 'cpp', 'css', 'javascript', 'js=javascript', 'json=javascript', 'xml', 'yaml', 'sh', 'bash=sh', 'html']
