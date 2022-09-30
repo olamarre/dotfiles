@@ -63,8 +63,10 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 # ROS & GAZEBO
-source /opt/ros/noetic/setup.zsh
-source ~/catkin_ws/devel/setup.zsh
+# Note: these add ROS python paths to sys.path, which confuses pip list
+# when using it in a conda environment. Comment them out if not using ROS
+#source /opt/ros/noetic/setup.zsh
+#source ~/catkin_ws/devel/setup.zsh
 
 alias kill_gazebo="killall -9 gazebo & killall -9 gzserver & killall -9 gzclient"
 
@@ -75,3 +77,4 @@ cpprun () {
     g++ -o $filename.out $1 && ./$filename.out 
     rm $filename.out
 }
+source ~/.autoenv/activate.sh
