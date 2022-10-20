@@ -29,6 +29,9 @@ set laststatus=2
 " Set a color column at columns 73 and 80
 set colorcolumn=73,80
 
+" Highlight current line
+set cursorline
+
 " By default, the color columns are in bright red, this turns them to light grey
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 
