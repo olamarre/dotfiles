@@ -53,3 +53,12 @@ set bg=dark
 
 " Markdown code block syntax highlighting
 let g:markdown_fenced_languages = ['python', 'cpp', 'css', 'javascript', 'js=javascript', 'json=javascript', 'xml', 'yaml', 'sh', 'bash=sh', 'html']
+
+" Use Ctrl + j/k to move the current line down/up
+" (also works with blocks of lines in visual mode)
+nnoremap <C-j> :m .+1<CR>==
+nnoremap <C-k> :m .-2<CR>==
+inoremap <C-j> <Esc>:m .+1<CR>==gi
+inoremap <C-k> <Esc>:m .-2<CR>==gi
+vnoremap <C-j> :m '>+1<CR>gv=gv
+vnoremap <C-k> :m '<-2<CR>gv=gv
