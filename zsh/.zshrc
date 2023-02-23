@@ -60,15 +60,23 @@ else
     fi
 fi
 unset __conda_setup
+
+if [ -f "/home/olamarre/miniconda3/etc/profile.d/mamba.sh" ]; then
+    . "/home/olamarre/miniconda3/etc/profile.d/mamba.sh"
+fi
 # <<< conda initialize <<<
+
+
 
 # ROS & GAZEBO
 # Note: these add ROS python paths to sys.path, which confuses pip list
 # when using it in a conda environment. Comment them out if not using ROS
-#source /opt/ros/noetic/setup.zsh
-#source ~/catkin_ws/devel/setup.zsh
+source /opt/ros/noetic/setup.zsh
+source ~/catkin_ws/devel/setup.zsh
 
 alias kill_gazebo="killall -9 gazebo & killall -9 gzserver & killall -9 gzclient"
+
+
 
 
 # Builds and run a standalone cpp file. Usage: cpprun foo.cpp
