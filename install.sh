@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
 # install.sh
 # Link new dotfiles to the current system and back up old files or links
