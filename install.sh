@@ -24,9 +24,13 @@ backup_and_link () {
     ln -s "$1" "$2"    
 }
 
-backup_and_link "${DOTFILES_REPO_DIR}/zsh/.zshrc" "${HOME}/.zshrc"
+backup_and_link "${DOTFILES_REPO_DIR}/zsh/.myzshrc" "${HOME}/.myzshrc"
+ZSH_CFG_STR=$'\n# Personal configuration\nsource ~/.myzshrc'
+echo "$ZSH_CFG_STR" >> ~/.zshrc
+
 echo "---"
 backup_and_link "${DOTFILES_REPO_DIR}/vim/.vimrc" "${HOME}/.vimrc"
+
 echo "---"
 backup_and_link "${DOTFILES_REPO_DIR}/tmux/.tmux.conf" "${HOME}/.tmux.conf"
 

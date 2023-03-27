@@ -65,3 +65,6 @@ inoremap <C-j> <Esc>:m .+1<CR>==gi
 inoremap <C-k> <Esc>:m .-2<CR>==gi
 vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
+
+" Alias to save a read-only file (usage :sudow )
+cnoremap sudow w !sudo tee % >/dev/null
