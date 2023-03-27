@@ -28,9 +28,14 @@ backup_and_link "${DOTFILES_REPO_DIR}/zsh/.myzshrc" "${HOME}/.myzshrc"
 ZSH_CFG_STR=$'\n# Personal configuration\nsource ~/.myzshrc'
 echo "$ZSH_CFG_STR" >> ~/.zshrc
 
+# Prevent sourcing zsh twice (only source it from .myzshrc)
+sed -i 's/^source $ZSH\/oh-my-zsh.sh/# source $ZSH\/oh-my-zsh.sh/' ~/.zshrc
+
 echo "---"
 backup_and_link "${DOTFILES_REPO_DIR}/vim/.vimrc" "${HOME}/.vimrc"
 
 echo "---"
 backup_and_link "${DOTFILES_REPO_DIR}/tmux/.tmux.conf" "${HOME}/.tmux.conf"
 
+echo "---"
+echo Close the current terminal and open a new one for changes to take effect
