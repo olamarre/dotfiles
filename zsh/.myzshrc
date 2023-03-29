@@ -58,3 +58,41 @@ cpprun () {
 
 # Autoenv
 source ~/.autoenv/activate.sh
+
+# Log the memory usage every second to a .csv file in the home directory
+# Usage: sh log_memory_usage [filename.csv]
+# If no filename is provided, it defaults to 'memory_usage.csv'
+log_memory_usage() {
+    output_file=${1:-memory_usage.csv}
+    if [[ -e "${HOME}/$output_file" ]]; then
+        mv "${HOME}/$output_file" "${HOME}/${output_file}_$(date +%Y%m%d_%H%M%S)"
+    fi
+    echo "Unix Timestamp, Date Time, Memory Used (Bytes), Memory Usage (%)" > "${HOME}/$output_file"
+    while true
+    do
+        current_time=$(date +"%Y-%m-%d %H:%M:%S")
+        unix_timestamp=$(date +%s)
+        mem_info=$(free -b | awk 'NR==2{print $2,$3}')
+        read -r total used <<< "$mem_info"
+        if [[ $used == 0 ]]; then
+            continue
+        fi
+        memory_usage=$((used * 100 / total))
+        printf -v memory_usage "%.2f" $memory_usage
+        echo "$unix_timestamp, $current_time, $used, $memory_usage%" >> "${HOME}/$output_file"
+        sleep 1
+    done
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
