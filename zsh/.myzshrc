@@ -67,7 +67,7 @@ log_memory_usage() {
     if [[ -e "${HOME}/$output_file" ]]; then
         mv "${HOME}/$output_file" "${HOME}/${output_file}_$(date +%Y%m%d_%H%M%S)"
     fi
-    echo "Unix Timestamp, Date Time, Memory Used (Bytes), Memory Usage (%)" > "${HOME}/$output_file"
+    echo "Date Time, Unix Timestamp, Memory Used (Bytes), Memory Usage (%)" > "${HOME}/$output_file"
     while true
     do
         current_time=$(date +"%Y-%m-%d %H:%M:%S")
@@ -79,20 +79,8 @@ log_memory_usage() {
         fi
         memory_usage=$((used * 100 / total))
         printf -v memory_usage "%.2f" $memory_usage
-        echo "$unix_timestamp, $current_time, $used, $memory_usage%" >> "${HOME}/$output_file"
+        echo "$current_time,$unix_timestamp,$used,$memory_usage" >> "${HOME}/$output_file"
         sleep 1
     done
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
