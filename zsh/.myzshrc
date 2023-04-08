@@ -84,3 +84,19 @@ log_memory_usage() {
     done
 }
 
+# Read a file generated with the log_memory_usage function and output 
+# the highest memory usage logged
+# Usage: highest_memory_usage /path/to/memory_usage.csv
+highest_memory_usage() {
+    file_path=$1
+    highest_usage_perc=0
+    highest_usage_bytes=0
+    while IFS=',' read -r unix_timestamp date_time memory_used memory_perc; do
+        if [[ $memory_perc > $highest_usage_perc ]]; then
+            highest_usage_perc=$memory_perc
+            highest_usage_bytes=$memory_used
+        fi
+    done < "$file_path"
+    local highest_usage_gigabytes=$(echo "scale=2; $highest_usage_bytes / 1073741824" | bc)
+    echo "The highest memory usage percentage is $highest_usage_perc% ($highest_usage_gigabytes GB)"
+}
