@@ -38,6 +38,9 @@ alias gs="git status"
 
 alias kill_gazebo="killall -9 gazebo & killall -9 gzserver & killall -9 gzclient"
 
+# kill all .vscode-server processes
+alias kill_vscode="ps uxa | grep .vscode-server | awk '{print $2}' | xargs kill -9"
+
 #############
 # Misc  
 #############
@@ -89,8 +92,8 @@ log_memory_usage() {
 # Usage: highest_memory_usage /path/to/memory_usage.csv
 highest_memory_usage() {
     file_path=$1
-    highest_usage_perc=0
-    highest_usage_bytes=0
+    local highest_usage_perc=0
+    local highest_usage_bytes=0
     while IFS=',' read -r unix_timestamp date_time memory_used memory_perc; do
         if [[ $memory_perc > $highest_usage_perc ]]; then
             highest_usage_perc=$memory_perc
