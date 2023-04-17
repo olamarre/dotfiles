@@ -39,7 +39,7 @@ alias gs="git status"
 alias kill_gazebo="killall -9 gazebo & killall -9 gzserver & killall -9 gzclient"
 
 # kill all .vscode-server processes
-alias kill_vscode="ps uxa | grep .vscode-server | awk '{print $2}' | xargs kill -9"
+alias kill_vscode='ps uxa | grep .vscode-server | awk '"'"'!/grep/ {print $2}'"'"' | xargs -t kill -9'
 
 #############
 # Misc  
