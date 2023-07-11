@@ -84,3 +84,11 @@ log_memory_usage() {
     done
 }
 
+# Compile a latex project using pdflatex & bibtex
+# usage: all_pdflatex <filename without extension (stem)>
+all_pdflatex() {
+    pdflatex $1
+    bibtex $1
+    pdflatex $1
+    pdflatex $1 
+}
