@@ -46,8 +46,11 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 endif
 
 " list plugins to install here
+" Note: to install a newly-added plugin, reload the vimrc and run :PlugInstall
 call plug#begin('~/.vim/plugged')
 Plug 'gruvbox-community/gruvbox'
+" Markdown live preview in browser (usage :MarkdownPreview )
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 call plug#end()
 
 " set color scheme (& dark background)
