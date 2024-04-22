@@ -35,6 +35,13 @@ alias kill_gazebo="killall -9 gazebo & killall -9 gzserver & killall -9 gzclient
 # kill all .vscode-server processes
 alias kill_vscode='ps uxa | grep .vscode-server | awk '"'"'!/grep/ {print $2}'"'"' | xargs -t kill -9'
 
+
+# xclip
+alias xcopy="xclip -sel c"  # copy to the clipboard
+alias xpaste="xclip -o -sel clip"  # paste clipboard contents
+alias xclear="xclip -sel clip < /dev/null"  # clear clipboard
+
+
 #############
 # Misc
 #############
