@@ -38,6 +38,11 @@ set wildignorecase
 " By default, the color columns are in bright red, this turns them to light grey
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 
+" Show tabs as ! with trailing center dots (·)
+" Show trailing whitespace with trailing center dots (·)
+set list
+set listchars=tab:!·,trail:·
+
 " Auto-install vim-plug
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))

@@ -46,6 +46,8 @@ alias xclear="xclip -sel clip < /dev/null"  # clear clipboard
 # Misc
 #############
 
+export EDITOR="/usr/bin/vim"
+
 # Kill a process using a specific port
 # example usage: kill_port 8889
 kill_port() {sudo kill -9 $(sudo lsof -t -i:$1)}
