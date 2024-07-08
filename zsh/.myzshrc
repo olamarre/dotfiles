@@ -1,3 +1,7 @@
+
+export PATH="$HOME/.local/bin:$PATH"
+export EDITOR="/usr/bin/vim"
+
 #############
 
 ZSH_THEME="oldgallois"
@@ -49,7 +53,6 @@ du() {
 # Misc
 #############
 
-export EDITOR="/usr/bin/vim"
 
 # Kill a process using a specific port
 # example usage: kill_port 8889
