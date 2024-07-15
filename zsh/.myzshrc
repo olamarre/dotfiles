@@ -44,6 +44,8 @@ du() {
     command du "$@"
 }
 
+alias docker="sudo docker"  # always run docker with sudo
+alias docker-rm-all='docker rm $(docker ps -a -q -f status=exited)'  # remove all exited containers
 
 #############
 # Misc
@@ -128,3 +130,30 @@ all_pdflatex() {
     pdflatex $1
     pdflatex $1
 }
+
+# Show all tags available on a Docker Hub for a given image (need to sudo apt install jq)
+# Example usage: listAllTags ubuntu
+# Source: https://forums.docker.com/t/how-can-i-list-tags-for-a-repository/32577/9
+function listAllTags() { 
+    local repo=${1} 
+    local page_size=${2:-100} 
+    [ -z "${repo}" ] && echo "Usage: listTags <repoName> [page_size]" 1>&2 && return 1 
+    local base_url="https://registry.hub.docker.com/api/content/v1/repositories/public/library/${repo}/tags" 
+     
+    local page=1 
+    local res=$(curl "${base_url}?page_size=${page_size}&page=${page}" 2>/dev/null) 
+    local tags=$(echo ${res} | jq --raw-output '.results[].name') 
+    local all_tags="${tags}" 
+ 
+    local tag_count=$(echo ${res} | jq '.count')   
+ 
+    ((page_count=(${tag_count}+${page_size}-1)/${page_size}))  # ceil(tag_count / page_size) 
+ 
+    for page in $(seq 2 $page_count); do 
+        tags=$(curl "${base_url}?page_size=${page_size}&page=${page}" 2>/dev/null | jq --raw-output '.results[].name') 
+        all_tags="${all_tags}${tags}" 
+    done 
+ 
+    echo "${all_tags}" | sort 
+}
+
