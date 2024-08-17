@@ -83,6 +83,30 @@ cpprun () {
 # Autoenv
 source ~/.autoenv/activate.sh
 
+# Docker
+
+# Retrieved from https://stackoverflow.com/a/62707653
+function rem_image() {
+  image_id=$1
+  
+  docker rm -f $(docker ps -a -q --filter="ancestor=$image_id") 2>&- || echo "Found no containers for that image"
+  docker rmi $image_id
+  echo "Image deleted successfully"
+}
+
+# Remove all images and containers associated with them by pattern matching
+# usage: docker_clean <image pattern>
+function docker_clean() {
+  pattern=$1
+
+  for image_id in `docker images | grep $pattern | awk '{ print $3}'`
+  do
+      echo Removing... $image_id
+      rem_image $image_id
+  done
+}
+
+
 # Log the memory usage every second to a .csv file in the home directory
 # Usage: sh log_memory_usage [filename.csv]
 # If no filename is provided, it defaults to 'memory_usage.csv'
