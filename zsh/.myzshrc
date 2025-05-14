@@ -13,7 +13,7 @@ REPORTTIME=-1
 
 # Which plugins would you like to load?
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git thefuck z)
+#plugins=(git thefuck z)
 
 source $ZSH/oh-my-zsh.sh
 
